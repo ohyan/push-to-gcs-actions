@@ -1,8 +1,0 @@
-name: "rsync-gcs"
-description: "sync directory to google cloud storage bucket"
-author: ohyan
-branding:
-  icon: mail
-runs:
-  using: docker
-  image: Dockerfile

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 if [ -z $SOURCE_PATH ]; then
     echo "SOURCE_PATH is not set"
     exit 1
