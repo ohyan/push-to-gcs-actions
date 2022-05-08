@@ -1,4 +1,4 @@
-name: push-to-gcs-actions
+name: Sync to gcs
 
 on:
   push:
@@ -10,8 +10,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: google-github-actions/setup-gcloud@v0
+      - uses: google-github-actions/setup-gcloud@v0pu
         with:
-          service_account_key: ${{ GCP_CREDENTIAL_FILE }}
+          service_account_key: ${GCP_CREDENTIAL_FILE}
       - run: gcloud auth configure-docker
-      - run: ./sync.sh 
+      - run: |
+          gsutil rsync -r ${SOURCE_PATH} ${DESTINATION_GCS_PATH}
+          echo "Sync completed"
